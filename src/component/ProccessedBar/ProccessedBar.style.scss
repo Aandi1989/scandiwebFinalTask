@@ -1,0 +1,109 @@
+.Wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: -20px;
+  background: var(--breadcrumbs-background);
+  padding-bottom: 20px;
+  .Content {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 17px;
+      background: var(--secondary-dark-color);
+      margin: 0 5px;
+      &-text {
+        position: absolute;
+        white-space: nowrap;
+        top: 32px;
+        font-weight: 600;
+        color: var(--secondary-dark-color);
+      }
+    }
+    &__item.Active {
+      background: var(--primary-base-color);
+      .Content__item-text {
+        color: #000;
+      }
+    }
+  }
+  .Line {
+    width: 25%;
+    height: 3px;
+    &.Start {
+      background: var(--primary-base-color);
+    }
+    &.End {
+      background: var(--secondary-dark-color);
+    }
+    &.End.Active {
+      position: relative;
+      overflow-y: hidden;
+      .Background {
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        background: var(--primary-base-color);
+        animation: slide 1s;
+      }
+    }
+
+  }
+  .MiddleLine {
+    overflow-y: hidden;
+    background: var(--secondary-dark-color);
+    width: 100%;
+    height: 3px;
+  }
+  .MiddleLine.Active {
+    .Background {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: var(--primary-base-color);
+      animation: slide 1s;
+    }
+  }
+}
+@keyframes slide {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0%
+  }
+}
+.Success-icon {
+  padding: 6px 4px;
+  position: relative;
+  &::after,
+  &::before {
+    position: absolute;
+    display: block;
+    content: ' ';
+    height: 2px;
+    background: #fff;
+  }
+  &::after {
+    top: 7px;
+    left: -3px;
+    width: 7px;
+    transform: rotate(45deg);
+  }
+  &::before {
+    top: 5px;
+    left: 0px;
+    width: 15px;
+    transform: rotate(135deg);
+  }
+}
